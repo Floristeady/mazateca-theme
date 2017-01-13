@@ -1,0 +1,43 @@
+<?php
+/**
+ *
+ * @package WordPress
+ * @subpackage mazateca
+ * @since mazateca 1.0
+ */
+
+get_header(); ?>
+
+<div id="content" class="site-content row">
+	
+	<?php while ( have_posts() ) : the_post(); ?>
+	
+	<div class="column medium-9">
+		
+		<?php include('inc/breadcrumbs.php'); ?>
+		
+		<?php // Page title.
+			the_title( '<header class="entry-header"><h1 class="entry-title">', '</h1></header>' ); ?>
+		
+		<?php if (has_excerpt()) :
+			$excerpt = get_the_excerpt(); 
+			echo '<h4 class="entry-excerpt">'. $excerpt .'</h4>';
+			endif;
+		?>
+		
+		<div class="entry-content">
+			<?php
+				the_content();
+			?>
+		</div><!-- .entry-content -->
+
+	</div>
+	
+	<?php endwhile; ?>
+
+</div><!-- #content -->
+
+
+<?php get_sidebar('menu'); ?>
+
+<?php get_footer(); ?>

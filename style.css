@@ -1,0 +1,1737 @@
+/*
+	Theme Name: Mazateca Theme
+	Theme URI: https://github.com/floristeady/mazateca
+	Description: Mazateca Theme for Mazateca Project
+	Author: Florencia Rosenfeld
+	Author URI: http://www.floristeady.com
+	Version: 1.1
+	License: GNU General Public License v2 or later
+    License URI: http://www.gnu.org/licenses/gpl-2.0.html
+	Tags: html5, foundation, responsive web design, media queries, two menus, sidebar widget, footer widget, admin panel.
+*/
+
+/* ==|== primary styles =====================================================
+   Primary Styles
+   Author: Florencia Rosenfeld
+   Author URI: http://www.floristeady.com/
+   This is a project made with effort and dedicated.
+   
+   font-family: 'Cabin', sans-serif;
+   font-family: 'Roboto Slab', serif;
+   
+   
+* Table of Contents
+==================================================
+
+	1. Base styles & Repeatable Patterns
+	2. Structure: Header & Footer
+	3. Typography 
+	4. Links & Navigation
+	5. Pages Content 
+    6. Media Queries
+    7. Helpers & Animation
+    8. Widgets & Plugins 
+    9. Hacks & IE
+	10. Print Style
+*/
+
+
+/* ==========================================================================
+   1. Base styles & Repeatable Patterns
+   ========================================================================== */
+
+html {
+	overflow-y: scroll;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust:     100%;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+	color: #2b2b2b;
+	font-family: 'Cabin', sans-serif;
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+body {
+    font-size: 100%;
+    line-height: 1.4;
+}
+
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection declarations have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+
+/**
+ * Repeatable Patterns
+   ===================================== */
+
+input,
+textarea {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 2px;
+	color: #2b2b2b;
+	font-size: 0.9em;
+	padding: 8px 10px 7px;
+}
+
+textarea {
+	width: 100%;
+}
+
+input:focus,
+textarea:focus {
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	outline: 0;
+}
+
+/* Buttons */
+
+
+button, .button {
+	border-radius: 0;
+	text-transform: uppercase;
+	font-weight: 700;
+	letter-spacing: 1px;
+	padding: 1em 1.5em;
+	color: white;
+}
+
+.button-border-yellow {
+	border: 1px solid #f8a200;
+	background: transparent;
+	padding: 0;	
+}
+
+.button-border-yellow span {
+	background: #f8a200;
+	display: inline-block;
+	padding: 1em 1.5em;
+	margin: 2px;
+}
+
+.button-border-yellow:hover {
+	background: transparent;
+	border: 1px solid #ce8b0d;
+}
+
+.button-border-yellow:hover span {
+	background: #ce8b0d;
+}
+
+.button-border-green {
+	border: 1px solid #289740;
+	background: transparent;
+	padding: 0;	
+}
+
+.button-border-green span {
+	background: #289740;
+	display: inline-block;
+	padding: 1em 1.5em;
+	margin: 2px 2px 3px;
+}
+
+.button-border-green:hover {
+	background: transparent;
+	border: 1px solid #1c7930;
+}
+
+.button-border-green:hover span {
+	background: #1c7930;
+}
+
+button,
+.contributor-posts-link,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	background-color: #213A65;
+	border: 0;
+	border-radius: 0;
+	color: #fff;
+	font-size: .9em;
+	font-weight: 700;
+	padding: 10px 30px 11px;
+	text-transform: uppercase;
+	vertical-align: bottom;
+}
+
+button:hover,
+button:focus,
+.contributor-posts-link:hover,
+input[type="button"]:hover,
+input[type="button"]:focus,
+input[type="reset"]:hover,
+input[type="reset"]:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+	background-color: #172b4c;
+	color: #fff;
+}
+
+button:active,
+.contributor-posts-link:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+input[type="submit"]:active {
+	background-color: #172b4c;
+}
+
+.search-field {
+	width: 100%;
+}
+
+.search-submit {
+	display: none;
+}
+
+/* Placeholder text color -- selectors need to be separate to work. */
+
+::-webkit-input-placeholder {
+	color: #939393;
+}
+
+:-moz-placeholder {
+	color: #939393;
+}
+
+::-moz-placeholder {
+	color: #939393;
+	opacity: 1; /* Since FF19 lowers the opacity of the placeholder by default */
+}
+
+:-ms-input-placeholder {
+	color: #939393;
+}
+
+/* Responsive images. Fluid images for posts, comments, and widgets */
+
+.comment-content img,
+.entry-content img,
+.entry-summary img,
+#site-header img,
+.widget img,
+.wp-caption {
+	max-width: 100%;
+}
+
+/**
+ * Make sure images with WordPress-added height and width attributes are
+ * scaled correctly.
+ */
+
+.comment-content img[height],
+.entry-content img,
+.entry-summary img,
+img[class*="align"],
+img[class*="wp-image-"],
+img[class*="attachment-"],
+#site-header img {
+	height: auto;
+}
+
+img.size-full,
+img.size-large,
+.wp-post-image,
+.post-thumbnail img {
+	height: auto;
+	max-width: 100%;
+}
+
+/* Make sure embeds and iframes fit their containers */
+
+embed,
+iframe,
+object,
+video {
+	margin-bottom: 24px;
+	max-width: 100%;
+}
+
+p > embed,
+p > iframe,
+p > object,
+span > embed,
+span > iframe,
+span > object {
+	margin-bottom: 0;
+}
+
+/* Alignment */
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+blockquote.alignleft,
+img.alignleft {
+	margin: 7px 24px 7px 0;
+}
+
+.wp-caption.alignleft {
+	margin: 7px 14px 7px 0;
+}
+
+blockquote.alignright,
+img.alignright {
+	margin: 7px 0 7px 24px;
+}
+
+.wp-caption.alignright {
+	margin: 7px 0 7px 14px;
+}
+
+blockquote.aligncenter,
+img.aligncenter,
+.wp-caption.aligncenter {
+	margin-top: 7px;
+	margin-bottom: 7px;
+}
+
+.site-content blockquote.alignleft,
+.site-content blockquote.alignright {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	padding-top: 17px;
+	width: 50%;
+}
+
+.site-content blockquote.alignleft p,
+.site-content blockquote.alignright p {
+	margin-bottom: 17px;
+}
+
+.wp-caption {
+	margin-bottom: 24px;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin: 0;
+}
+
+.wp-caption {
+	color: #767676;
+}
+
+.wp-caption-text {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing:    border-box;
+	box-sizing:         border-box;
+	font-size: 12px;
+	font-style: italic;
+	line-height: 1.5;
+	margin: 9px 0;
+	padding-right: 10px;
+}
+
+.wp-smiley {
+	border: 0;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Assistive text */
+
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	height: auto;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	text-decoration: none;
+	text-transform: none;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar */
+}
+
+
+/* ==========================================================================
+   1. Structure: Header & Footer
+   ========================================================================== */
+
+
+#main {
+    clear: both;
+    margin: 0;
+    padding: 0px;
+    background-color: #F5EFEA;
+}
+
+.page #main {
+	background-image: url(images/form_page.svg);
+	background-position: 80% top;
+	background-repeat: no-repeat;
+} 
+
+article {
+	clear: both;
+	max-width: 100%;
+}
+
+#site-title {
+	float: left;
+    padding: 0;
+    display: block;
+    margin-top: -2.4em;
+    margin-bottom: 10px;
+}
+
+#site-title h1 {
+	clear: both;
+    display: block;
+    float: left;
+    font-size: 1.9em;
+    font-weight: bold;
+    line-height: 1.2em;
+    margin: 0;
+}
+
+#site-title h1 span {
+	background: #213A65;
+	padding: 10px 20px 0px 20px;
+	border-radius: 80px;
+	display: inline-block;
+}
+
+#site-title h1 img {
+	max-width: 100px;
+	padding: 5px 0 5px;
+    text-align: center;
+}
+
+#site-title h1 a {
+	color: #444;
+}
+
+#site-title h2 {
+    color: #777777;
+    font-size: 0.9em;
+    font-style: italic;
+    margin: 17px 0 0;
+    float: left;
+    display: none;
+}
+
+#skip {
+	display: none;
+}
+
+#search-container {
+	float: left;
+}
+
+#top-header {
+	background-color: #534A43;
+	background-image: url(images/form_top.svg);
+	background-repeat: space;
+}
+
+#header-main {
+	background: #213A65;
+}
+
+/* footer */
+#footer {
+	width:100%;
+	background: white;
+	float: left;
+	margin: 0px;
+	padding: 1em 0;
+}
+
+#footer-content .widget_nav_menu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0px;
+}
+
+#footer-content .widget_nav_menu li {
+	display: inline;
+	border-right: 1px solid #636363;
+	padding: 0px 8px 0px 6px;
+}
+
+#footer-content #nav_menu-2 li:last-child {
+	border: none;
+}
+
+#footer-content .widget_nav_menu li a {
+	color: #636363;
+	font-size: 0.82em;
+	font-weight: bold;
+}
+
+#footer-content .widget_nav_menu li a:hover {
+	text-decoration: underline;
+}
+
+#footer-content p, 
+#footer-content .textwidget, 
+#footer-content li {
+	color: #636363;
+	text-align: center;
+}
+
+#footer-content .one_third {
+	margin-right: 0px;
+	float: right;
+}
+
+.widget-footer aside.widget_sp_image {
+	display: inline-block;
+	/*margin: .2em .6em .4em;*/
+}
+
+.widget-footer aside.widget_sp_image img {
+	max-width: 100px;
+}
+
+/* ==========================================================================
+   3. Typography
+   ========================================================================== */ 
+/*
+ * Font-face
+ */
+ 
+p, li {
+	color: #534A43;
+	font-size: 0.95em;
+	line-height: 1.4em;
+}
+
+address {
+	color: #534A43;
+	font-size: 0.85em;
+	font-style: italic;
+}
+
+/*
+ * Headers
+ */
+
+h1, h2, h3, h4 {
+	font-weight: normal;
+}
+
+h1 {
+	color: #444;
+	font-size: 2em;
+	margin: 14px 0px 12px;
+	line-height: 1.2em;
+}
+
+h1.entry-title {
+	font-weight: 300;
+	font-family: 'Roboto Slab', serif;
+	font-size: 1.8rem;
+}
+
+h2 {
+	color: #555555;
+	font-size: 1.5rem;
+	margin: 5px 0px;
+	line-height: 1.2em;
+}
+
+h3 {
+	color: #444444;
+	font-size: 1.3rem;
+	line-height: 18px;
+	margin: 10px 0px;
+}
+
+h4 {
+	color: #444444;
+	font-size: 1.1rem;
+	line-height: 1.125em;
+	margin: 10px 0px;
+}
+
+h5 {	
+	color: #252525;
+	font-size: 1rem;
+    margin: 10px 0px;
+    font-weight: normal;
+}
+
+h6 {
+	margin: 10px 0px;
+	font-size: 0.9rem;
+}
+
+
+/* ==========================================================================
+   4. Links & Navigation
+   ========================================================================== */ 
+
+
+a { color: #213A65; text-decoration: none; }
+a:hover { color: #2d4c80; }
+a:focus { outline: 0; }
+a:hover, a:active { outline: 0; }
+
+
+/* Navigation 
+  ===================================== */
+  
+nav#access {
+	clear: right;
+	display: block;
+	float: right;
+	padding: 2.5em 0em 1.5em;
+	vertical-align: middle;
+}
+
+nav#access ul {
+	padding: 0px;
+	margin: 0px;
+	float: left;
+}
+
+nav#access li {
+	display: inline;
+	float: left;
+} 
+
+nav#access li:before {
+	content: '/';
+	display: inline-block;
+	color: #819DB2;
+}
+
+nav#access li:last-child:before {
+	content: '';
+}
+
+nav#access li:last-child a {
+	padding-right: 0;
+}
+
+nav#access li a {
+	color: white;
+	font-size: .95em;
+	padding: 0px 10px;
+	float: left;
+	font-family: 'Roboto Slab', serif;
+	text-transform: uppercase;
+} 
+
+nav#access li a:hover {
+	color: #2799BA;
+}
+
+nav#access li.current_page_item a, 
+nav#access li.current-page-ancestor a {
+	color: #2799BA;
+}
+
+nav#access ul.sub-menu {
+	display: inline;
+}
+
+
+/*
+ * Nav-2
+ */
+ 
+#nav-2 {
+   float: right;
+}
+
+#nav-2 #menu-secondary, #nav-2 .menu {
+	float: left;
+	display: block;
+	margin:0;
+	width: 100%;
+}
+
+#nav-2 ul {
+	float: right;
+	padding: 0;
+	margin: 0px;
+}
+
+#nav-2 ul li {
+	display: inline;
+	margin: 0px 0px;
+	padding: 0px 6px;
+}
+
+#nav-2 ul li:last-child {
+	border-right: none;
+}
+
+#nav-2 ul li a{
+	font-size: 0.8em;
+	line-height: 0px;
+	color: #C7C5C3;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+}
+
+#nav-2 ul li a:hover {
+	color: white;
+}
+
+/*
+ * nav
+ */
+
+.nav-links {
+	-webkit-hyphens: auto;
+	-moz-hyphens:    auto;
+	-ms-hyphens:     auto;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	hyphens:         auto;
+	word-wrap: break-word;
+}
+
+.post-navigation,
+.image-navigation {
+	max-width: 474px;
+	padding: 0 10px;
+}
+
+.post-navigation a,
+.image-navigation .previous-image,
+.image-navigation .next-image {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 11px 0 12px;
+	width: 100%;
+}
+
+.post-navigation .meta-nav {
+	color: #767676;
+	display: block;
+	font-size: 12px;
+	font-weight: 900;
+	line-height: 2;
+	text-transform: uppercase;
+}
+
+.post-navigation a,
+.image-navigation a {
+	color: #2b2b2b;
+	display: block;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 1.7142857142;
+	text-transform: none;
+}
+
+.post-navigation a:hover,
+.image-navigation a:hover {
+	color: #41a62a;
+}
+
+/* Paging Navigation */
+
+.paging-navigation {
+	border-top: 5px solid #000;
+	margin: 48px 0;
+}
+
+.paging-navigation .loop-pagination {
+	margin-top: -5px;
+	text-align: center;
+}
+
+.paging-navigation .page-numbers {
+	border-top: 5px solid transparent;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 900;
+	margin-right: 1px;
+	padding: 7px 16px;
+	text-transform: uppercase;
+}
+
+.paging-navigation a {
+	color: #2b2b2b;
+}
+
+.paging-navigation .page-numbers.current {
+	border-top: 5px solid #24890d;
+}
+
+.paging-navigation a:hover {
+	border-top: 5px solid #41a62a;
+	color: #2b2b2b;
+}
+
+/* breadcrumbs */
+
+#breadcrumbs {
+	color: #9B9B9B;
+}
+
+#breadcrumbs a, #breadcrumbs span {
+	color: #9B9B9B;
+	font-size: .9em;
+}
+
+#breadcrumbs a:hover {
+	color: #213A65;
+}
+
+#breadcrumbs .current {
+	text-decoration: underline;
+}
+
+/* sidebar */
+
+#sidebar-menu {
+	margin: 1em 0 1em 1em;
+}
+
+#sidebar-menu h3 {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+#sidebar-menu ul {
+	margin: 0;
+	padding: 0;
+}
+
+#sidebar-menu ul li {
+	list-style: none;
+	padding: 1em 0;
+	border-bottom: 1px solid #979797;
+}
+
+#sidebar-menu ul li:last-child {
+	border-bottom: none;
+}
+
+#sidebar-menu ul li:before {
+	content: '>';
+	display: inline-block;
+	padding-right: .4em;
+}
+
+#sidebar-menu ul li a {
+	font-weight: bold;
+}
+
+#sidebar-menu ul li.current_page_item a {
+	color: #2799BA;
+}
+
+/* ==========================================================================
+   5. Pages Content
+   ========================================================================== */ 
+
+#home-gallery {
+	 position: relative;
+	 float: left;
+	 width: 100%;
+	 min-height:400px;
+	 background: #151d37;
+}
+
+#home-gallery .slides li {
+	position: relative;
+	overflow: hidden;
+}
+
+#home-gallery .text {
+	position: absolute;
+	bottom: 15%;
+}
+
+#home-gallery .text h1 {
+	color: #F8A200;
+	font-family: 'Roboto Slab', serif;
+	margin-bottom: 0;
+	font-size: 2.1rem;
+}
+
+#home-gallery .text h2 {
+	font-size: 1.2rem;
+}
+
+#home-gallery .text h2, #home-gallery .text p {
+	color: white;
+	margin: 0;
+}
+
+#home-gallery .text .button {
+	margin: 4em 1em 0;
+}
+
+#home-gallery .back {
+	display: inline-block;
+	height: 50%;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.9+100 */
+background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#e6000000',GradientType=0 ); /* IE6-9 */
+}
+
+
+#section-about {
+	background-color: #534A43;
+	padding: 3em 0;
+	float: left;
+	width: 100%;
+	background-image: url(images/form_center.svg);
+	background-repeat: no-repeat;
+	background-position: 70% center;
+}
+
+#section-about .text {
+	margin: 5em 6% 1.5em;
+}
+
+#section-about h2 {
+	color: white;
+	font-family: 'Roboto Slab', serif;
+	font-size: 1.8rem;
+}
+
+#section-featured {
+	background: #999;
+	float: left;
+	width: 100%;
+}
+
+#section-featured > .column {
+	padding-top: 5em;
+	padding-bottom: 5em;
+	background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#section-featured .inner {
+	width: 60%;
+    float: right;
+    padding: 0;
+}
+
+#section-featured .column:nth-child(2) > div {
+	float: left;
+	padding-left: 4%;
+}
+
+#section-featured h3 {
+	color: white;
+	font-size: 1.7em;
+	line-height: 130%;
+	letter-spacing: .5px;
+	text-transform: uppercase;
+}
+
+#section-featured p {
+	color: white;
+	font-weight: 700;
+	font-size: 1.05em;
+}
+
+#section-featured .column:nth-child(1) p {
+	color: #F8A200;
+} 
+
+#section-featured .column:nth-child(1) .button {
+	background-color: #F8A200;
+} 
+
+#section-featured .column:nth-child(2) p {
+	color: #FB5028;
+} 
+
+#section-featured .column:nth-child(2) .button {
+	background-color: #FB5028;
+} 
+
+#section-about p {
+	color: white;
+	font-size: 1.05rem;
+}
+
+#section-about img {
+	border: 4px solid white;
+}
+
+#section-video {
+	padding: 3em 0;
+	float: left;
+	width: 100%;
+	background-color: #F5EFEA;
+	background-image: url(images/form_page.svg);
+	background-position: 40% top;
+	background-repeat: no-repeat;
+}
+
+#section-video .text {
+	margin: 1em 6% 1em;
+}
+
+#section-video h2 {
+	color: #213A65;
+	font-family: 'Roboto Slab', serif;
+	font-size: 1.8rem;
+}
+
+#section-video p {
+	color: #4A4A4A;
+	margin-bottom: 2em;
+}
+
+/*
+ * custom pages
+ */
+
+#page-gallery {
+	margin: 2em 0 0;
+	position: relative;
+}
+
+#page-gallery .slides li {
+	border: 4px solid white;
+}
+
+.page-template-page-child #page-gallery {
+	margin: 2em 0;
+}
+
+/*
+ * entry-content
+ */
+ 
+.single-post .entry-header {
+	margin: 3em 0 0;
+}
+
+.single-post .entry-content {
+	margin: 2em 0 2em;
+}
+ 
+.page .entry-content {
+	 margin: 0 0 3em;
+ }
+ 
+.page .entry-header {
+	margin: 1.5em 0 0;
+}
+
+.entry-content p {
+	font-size: 1em;
+}
+
+.entry-content h1 {
+	font-size: 1.6em;
+	font-weight: bold;
+	margin: 20px 0 10px;
+	color: #4A4A4A;
+}
+
+.entry-content h2 {
+	font-size: 1.1em;
+	margin: 10px 0 10px;
+	color: #534A43;
+	font-weight: bold;
+	font-family: 'Roboto Slab', serif;
+}
+
+.page-template-page-parent h4.entry-excerpt {
+	font-size: 1rem;	
+	line-height: 140%;
+}
+
+.page h4.entry-excerpt { 
+	line-height: 140%;
+	color: #534A43;
+}
+
+.entry-content h3 {
+	color: #534A43;
+	margin: 10px 0 10px;
+	font-size: 1.05em;
+	text-transform: none;
+}
+
+.entry-content h4 {
+	text-transform: none;
+	font-size: 1em;
+	color: #534A43;
+}
+
+.entry-content ul {
+	margin: 1em 0px 0px 0px;
+	padding: 0px 0px 20px 0px;
+	list-style: circle;
+}
+
+.entry-content ul {
+	margin: 1em 0px 0px 0px;
+	padding: 0px 0px 20px 0px;
+	list-style: decimal;
+}
+
+.entry-content ul li, .entry-content ol li {
+	padding: .5em 0;
+}
+
+.entry-content h5, .entry-content h6 {
+	color: #534A43;
+}
+
+.entry-content img {
+	max-width: 100%;
+	height: auto;
+}
+
+.entry-content a:hover {
+	text-decoration: underline;
+}
+
+.entry-meta {
+	color: #767676;
+	font-size: 0.8em;
+	font-weight: 400;
+	line-height: 1.3333333333;
+	text-transform: uppercase;
+}
+
+.entry-meta a {
+	color: #767676;
+}
+
+.hentry {
+	margin: 0 auto 48px;
+}
+
+
+/*
+ * post styles
+ */
+
+a.post-thumbnail:hover img {
+	opacity: 0.85;
+}
+
+.full-size-link:before,
+.parent-post-link:before,
+.site-content span + .byline:before,
+.site-content span + .comments-link:before,
+.site-content span + .edit-link:before,
+.site-content span + .entry-date:before {
+	content: "";
+}
+
+.attachment span.entry-date:before,
+.entry-content .edit-link a:before,
+.entry-meta .edit-link a:before,
+.site-content .byline a:before,
+.site-content .comments-link a:before,
+.site-content .entry-date a:before,
+.site-content .featured-post:before,
+.site-content .full-size-link a:before,
+.site-content .parent-post-link a:before,
+.site-content .post-format a:before {
+	-webkit-font-smoothing: antialiased;
+	display: inline-block;
+	font: normal 16px/1 Genericons;
+	text-decoration: inherit;
+	vertical-align: text-bottom;
+}
+
+.site-content .entry-meta > span {
+	margin-right: 10px;
+}
+
+.full-size-link:before,
+.parent-post-link:before,
+.site-content span + .byline:before,
+.site-content span + .comments-link:before,
+.site-content span + .edit-link:before,
+.site-content span + .entry-date:before {
+	content: "";
+}
+
+.attachment span.entry-date:before,
+.entry-content .edit-link a:before,
+.entry-meta .edit-link a:before,
+.site-content .byline a:before,
+.site-content .comments-link a:before,
+.site-content .entry-date a:before,
+.site-content .featured-post:before,
+.site-content .full-size-link a:before,
+.site-content .parent-post-link a:before,
+.site-content .post-format a:before {
+	-webkit-font-smoothing: antialiased;
+	display: inline-block;
+	font: normal 16px/1 Genericons;
+	text-decoration: inherit;
+	vertical-align: text-bottom;
+}
+
+.site-content .entry-meta > span {
+	margin-right: 10px;
+}
+
+.list-view .site-content .hentry {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	padding-top: 48px;
+}
+
+.list-view .site-content .hentry:first-of-type,
+.list-view .site-content .hentry.has-post-thumbnail {
+	border-top: 0;
+	padding-top: 0;
+}
+
+.archive-header,
+.page-header {
+	margin: 0 auto 60px;
+	padding: 0px;
+}
+
+/* Tag links style */
+
+.entry-meta .tag-links a {
+	background-color: #767676;
+	border-radius: 0 2px 2px 0;
+	color: #fff;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 1.2727272727;
+	margin: 2px 4px 2px 10px;
+	padding: 3px 7px;
+	position: relative;
+	text-transform: uppercase;
+}
+
+.entry-meta .tag-links a:hover {
+	background-color: #57cccc;
+	color: #fff;
+}
+
+.entry-meta .tag-links a:before {
+	border-top: 10px solid transparent;
+	border-right: 8px solid #767676;
+	border-bottom: 10px solid transparent;
+	content: "";
+	height: 0;
+	position: absolute;
+	top: 0;
+	left: -8px;
+	width: 0;
+}
+
+.entry-meta .tag-links a:hover:before {
+	border-right-color: #57cccc;
+}
+
+.entry-meta .tag-links a:after {
+	background-color: #fff;
+	border-radius: 50%;
+	content: "";
+	height: 4px;
+	position: absolute;
+	top: 8px;
+	left: -2px;
+	width: 4px;
+}
+
+/* ==========================================================================
+   5. Media Queries
+   ========================================================================== */ 
+   
+
+/* medium displays  641px*/
+@media only screen and (max-width: 40.063em) { 
+	#site-title {
+		float: none;
+		text-align: center;
+		margin-top: -2em;}	
+	
+	#site-title h1 {
+		float: none;}
+	
+	nav#access {
+		text-align: center;
+		padding: .3em 0em 1em;}
+		nav#access li {
+		    display: inline-block;
+		    text-align: center;
+		    float: none;}
+		
+	#home-gallery {
+		min-height: auto;}
+		
+	#home-gallery .text,
+	#home-gallery .back {
+		position: relative;
+		text-align: center;}
+		
+		#home-gallery .back {
+			background: none;}
+		
+		#home-gallery .text h1 {
+			font-size: 1.4em;
+			margin-bottom: .5em;}
+		#home-gallery .text h2 {
+			font-size: .9rem;}
+		
+		#home-gallery .flex-control-nav, 
+		#home-gallery .flex-direction-nav {
+			display: none;}
+			
+		#home-gallery .text .button {
+			margin: 1em auto 0;
+			font-size: .85em;
+		}
+	#section-about .text {
+		margin: 1.5em 0 0;}
+		#section-about h2, #section-video h2 {
+			font-size: 1.3em;}
+			
+	#section-featured .inner {
+		width: 100%;}
+		
+	.widget-footer aside.widget_sp_image img {
+		max-width: 80% !important;}
+	.widget-footer aside.widget_sp_image {
+		margin: 0 0 .6em;
+		text-align: center;}
+		
+	.page .row.inside {
+		margin: 0;
+	}
+	
+	#sidebar-menu {
+		margin: .6em .4em 1em;}
+}
+   
+/* medium displays  641px*/
+@media only screen and (min-width: 40.063em) {  }
+
+
+/* medium displays 960px */
+@media only screen and (min-width: 60em) {  }
+
+
+/* large displays 1025px */
+@media only screen and (max-width: 64.063em) { 
+	
+	#home-gallery .text,
+	#home-gallery .back {
+		position: relative;
+		text-align: center;}
+		
+		#home-gallery .text h1 {
+			font-size: 1.6em;
+			margin-bottom: .4em;}
+		
+		#home-gallery .back {
+			background: none;}
+	
+	#home-gallery .flex-control-nav {
+			display: none;}
+			
+		#home-gallery .text .button {
+			margin: 1em auto 1em;
+			font-size: .85em;
+		}
+
+}
+
+   
+/* ==========================================================================
+   6. Helpers & Animation
+   ========================================================================== */ 
+   
+   /*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/*
+ * flexslider
+ */
+ 
+ 
+.flexslider, .flexslider .slides  {
+  margin: 0;
+  padding: 0;
+}
+.flexslider .slides > li {
+  display: none;
+  -webkit-backface-visibility: hidden;
+}
+.flexslider .slides img {
+  width: 100%;
+  display: block;
+}
+.flexslider .slides:after {
+  content: "\0020";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+html[xmlns] .flexslider .slides {
+  display: block;
+}
+* html .flexslider .slides {
+  height: 1%;
+}
+.no-js .flexslider .slides > li:first-child {
+  display: block;
+}
+
+.flex-control-nav {
+  width: 100%;
+  position: absolute;
+  bottom: .4em;
+  z-index: 1001;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.flex-control-nav li {
+  margin: 0 6px;
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+}
+.flex-control-paging li a {
+  width: 18px;
+  height: 18px;
+  display: block;
+  background: white;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  text-indent: -9999px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+.flex-control-paging li a:hover {
+  background: #213A65;
+}
+.flex-control-paging li a.flex-active {
+  background: #213A65;
+  cursor: default;
+}
+
+/* Direction Nav */
+.flex-direction-nav {*height: 0; margin: 0; padding: 0; list-style: none;}
+.flex-direction-nav a  { display: block; width: 40px; height: 40px; margin: 0px 0 0; position: absolute; top: 48%; z-index: 4; overflow: hidden; opacity: 0; cursor: pointer; color: rgba(0,0,0,0.8); -webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease; background:url(images/icon_arrows.svg) no-repeat; text-indent:-9999em; }
+.flex-direction-nav .flex-prev { left: 5px;background-position:left center; }
+.flex-direction-nav .flex-next { right: 5px;  background-position:right center;}
+.flexslider:hover .flex-prev { opacity: 0.8; left: 10px;  }
+.flexslider:hover .flex-next { opacity: 0.8; right: 10px; }
+.flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover { opacity: 1; }
+.flex-direction-nav .flex-disabled { opacity: 0!important; filter:alpha(opacity=0); cursor: default; }
+
+   
+/* ==========================================================================
+   7. Widgets & Plugins
+   ========================================================================== */
+
+ /* Widgets
+ ================== */
+
+.widget-list {
+	margin: 0px;
+	padding: 0px;
+	list-style: none outside none;
+}
+
+#sidebar .widget-list .widget-container {
+	padding: 0.8em 1em 0.8em;
+}
+
+.widget-list .widget-container h1 {
+	padding-bottom: 4px;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.widget-list .widget-container li, 
+.widget-list .widget-container .textwidget,
+.widget-list .widget-container p {
+	font-size: 0.92em;
+	color: #444444;
+}
+
+
+/* ==========================================================================
+   8. Hacks & IE
+   ========================================================================== */
+
+/* =Hack webkit */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	
+}
+
+/* =Hack mozilla firefox */
+
+@-moz-document url-prefix() {
+
+}
+
+/* =Hack explorer 7 y 8 */
+
+.lte8 {}
+
+.ie7 {}
+
+
+/* ==========================================================================
+   9.  Print Style
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow:none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
